@@ -1,0 +1,27 @@
+.friend{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.friend-img{
+    margin-right: 10px;
+    position: relative;
+}
+.profile-img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.online-sign{
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background-color: green;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    right: 0;
+    bottom: 0;
+}

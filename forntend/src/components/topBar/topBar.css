@@ -1,0 +1,87 @@
+.top-bar-container{
+    height: 50px;
+    width: 100%;
+    background-color: #4267B2;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+}
+
+.top-bar-left{
+    flex: 3;
+}
+.logo{
+    font-size: 24px;
+    margin-left: 20px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+}
+.top-bar-center{
+    flex: 5;
+
+}
+.search-bar{
+     width: 100%;
+     height: 30px;
+     background-color: #fff;
+     border-radius: 15px;
+     display: flex;
+     align-items: center;
+}
+.search-icon{
+    font-size: 20px !important;
+    color: #4267B2;
+    margin-left: 10px;
+}
+.search-input{
+    width: 90%;
+    border: none;
+
+}
+.search-input:focus{
+    outline: none;
+}
+.top-bar-right{
+    flex: 4;
+    display: flex;
+    color: #fff;
+    align-items: center;justify-content: space-around;
+}
+.top-bar-link{
+    margin-right: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.top-bar-icons{
+    display: flex;
+}
+.top-bar-icon-item{
+    margin-right: 15px;
+    position: relative;
+    cursor: pointer;
+}
+.top-icon-badge{
+    background-color: #FA3E3E;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+.top-bar-img{
+    height: 32px;
+    width: 32px;
+    border-radius: 50px;
+    object-fit: cover;
+    cursor: pointer;
+}
