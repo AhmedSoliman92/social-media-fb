@@ -11,14 +11,30 @@ const Post = ({post}) => {
     const [isLiked, setIsLiked] = useState(false);
     const [like,setLike] = useState(post.likes.length);
     const [love,setLove] = useState(post.loves.length)
+    const [isLoved,setIsLoved] = useState(false);
     const handleLike = async()=>{
-        await axios.put(`/posts/${post._id}/like`,{userId:currentUser._id});
+        await axios.put(`/posts/${post._id}/like`,{userId:currentUser._id,reaction:'like'});
         setIsLiked(!isLiked);
+        //setIsLoved(isLoved? !isLoved && setLove(love-1): isLoved)
+        if(isLoved){
+            setIsLoved(isLoved? !isLoved: isLoved);
+            setLove(love-1);
+        }
         setLike(isLiked? like -1: like+1)
     }
-    const handleLove = ()=>{
-
+    const handleLove = async()=>{
+        await axios.put(`/posts/${post._id}/like`,{userId:currentUser._id,reaction:'love'});
+        setIsLoved(!isLoved);
+        if(isLiked){
+            setIsLiked(isLiked? !isLiked: isLiked);
+            setLike(like-1);
+        }
+        //setIsLiked(isLiked? !isLiked && setLike(like-1): isLiked)
+        setLove(isLoved? love - 1 : love + 1);
     }
+    useEffect(()=>{
+        setIsLoved(post.loves.includes(currentUser._id));
+    },[post.loves,currentUser._id])
     useEffect(()=>{
             setIsLiked(post.likes.includes(currentUser._id));
     },[post.likes,currentUser._id])

@@ -56,21 +56,78 @@ router.delete('/:id', async (req,res)=> {
 router.put('/:id/like', async(req, res) =>{
     try {
         const post =await Post.findById(req.params.id);
-        if(!post.likes.includes(req.body.userId)){
-            await Post.updateOne({_id:post._id}, {
-                $push: {
-                    likes: req.body.userId
-                }
-            });
-            res.status(201).json("You liked the post");
-        }else {
-            await Post.updateOne({_id:post._id}, {
-                $pull: {
-                    likes: req.body.userId
-                }
-            });
-            res.status(200).json("You disliked the post");
+        if(req.body.reaction==='like'){
+
+            if(post.loves.includes(req.body.userId)){
+                await Post.updateOne({_id:post._id}, {
+                    $pull: {
+                        loves: req.body.userId
+                    }
+                });
+            }
+
+
+
+
+            if(!post.likes.includes(req.body.userId)){
+                
+                await Post.updateOne({_id:post._id}, {
+                    $push: {
+                        likes: req.body.userId
+                    }
+                });
+                res.status(201).json("You liked the post");
+            }else {
+                await Post.updateOne({_id:post._id}, {
+                    $pull: {
+                        likes: req.body.userId
+                    }
+                });
+                res.status(200).json("You disliked the post");
+            }
+
+
+
+
+
+
+
+
+        }else if(req.body.reaction==='love'){
+
+            if(post.likes.includes(req.body.userId)){
+                await Post.updateOne({_id:post._id}, {
+                    $pull: {
+                        likes: req.body.userId
+                    }
+                });
+            }
+            if(!post.loves.includes(req.body.userId)){
+                
+                await Post.updateOne({_id:post._id}, {
+                    $push: {
+                        loves: req.body.userId
+                    }
+                });
+                res.status(201).json("You loved the post");
+            }else {
+                await Post.updateOne({_id:post._id}, {
+                    $pull: {
+                        loves: req.body.userId
+                    }
+                });
+                res.status(200).json("You disloved the post");
+            }
+
+
+
+
+
         }
+        
+
+
+
     } catch (err) {
         res.status(403).json(err)
     }
