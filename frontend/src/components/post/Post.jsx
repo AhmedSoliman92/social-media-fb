@@ -10,11 +10,13 @@ const Post = ({post}) => {
     const [user,setUser]= useState({});
     const [isLiked, setIsLiked] = useState(false);
     const [like,setLike] = useState(post.likes.length);
+    const [love,setLove] = useState(post.loves.length)
     const handleLike = async()=>{
         await axios.put(`/posts/${post._id}/like`,{userId:currentUser._id});
         setIsLiked(!isLiked);
         setLike(isLiked? like -1: like+1)
-        
+    }
+    const handleLove = ()=>{
 
     }
     useEffect(()=>{
@@ -48,8 +50,8 @@ const Post = ({post}) => {
                 <div className="post-bottom">
                     <div className="post-bottom-left">
                         <img src={`${PF}like.png`} alt="" className="like-btn" onClick={handleLike} />
-                        <img src={`${PF}heart.png`}alt="" className="like-btn" />
-                        <span className="post-like-counter">{like} people like it</span>
+                        <img src={`${PF}heart.png`}alt="" className="like-btn" onClick={handleLove} />
+                        <span className="post-like-counter">{like+love} people like it</span>
                     </div>
                     <div className="post-bottom-right">
                         <span className="post-comment-text"> comments</span>

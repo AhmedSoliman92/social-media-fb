@@ -13,7 +13,7 @@ const postSchema = new Schema({
         type:Array,
         default:[]
     },
-    heart:{
+    loves:{
         type:Array,
         default:[]
     },

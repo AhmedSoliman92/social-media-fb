@@ -42,6 +42,8 @@ export default function Share() {
                 <input placeholder='What is in your mind?' className="share-input" ref={description}/>
             </div>
             <hr className="shared-hr" />
+            {files[0] && (<img src={URL.createObjectURL(files)} alt="" />)
+            }
             <form className="shared-bottom" onSubmit={handleSubmit}>
                     <div className="shared-options">
                         <label htmlFor='file' className="shared-option">

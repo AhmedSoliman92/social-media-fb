@@ -8,12 +8,13 @@ const INITIAL_STATE= {
 
             profilePicture:"/profileImg/ahmed.jpg",
             coverPicture:"",
-            followers:Array,
-            following:Array,
+            followers:[1,2,3],
+            following:[1,2,3],
             isAdmin:false,
             createdAt:'2022-05-03T14:43:43.104+00:00',
             updatedAt :'2022-05-03T22:23:30.768+00:00',
-            city:"Budapest"
+            city:"Budapest",
+            relationship:2
     },
     isFetching:false,
     error: false

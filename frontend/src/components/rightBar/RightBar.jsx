@@ -1,15 +1,14 @@
 import './rightBar.css'
 
-
-import { Users } from '../../data'
 import Online from '../online/Online'
 export default function RightBar({user}) {
-
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const HomeRightBar = ()=> {
+    
     return(
       <>
         <div className="bday-container">
-          <img src="/assets/gift.png" alt="" className="bday-img" />
+          <img src={PF+"gift.png"} alt="" className="bday-img" />
           <span className="bday-text">
             <b>Rimy Alloush</b> and <b>1 other friend</b> have a birthday today
           </span>
@@ -37,11 +36,11 @@ export default function RightBar({user}) {
 
         <div className="online-friends">
             <h4 className="online-friend-title">Online Friend</h4>
-            <ul className="online-friend-list">
-              {Users.map((user)=>
-                <Online key={user.id} user={user} />
+            {/* <ul className="online-friend-list">
+              {user.following.map((u)=>
+                <Online key={u.id} user={u} />
               )}
-            </ul>
+            </ul> */}
         </div>
       </>
     )
@@ -62,13 +61,15 @@ export default function RightBar({user}) {
           </div>
           <div className="right-bar-info-item">
             <span className="right-bar-info-key">Relationship:</span>
-            <span className="right-bar-info-value">{user.relationships}</span>
+            <span className="right-bar-info-value">
+              {user.relationship==='1'? 'Single' : user.relationship==='2'? 'Maried': '-' }
+            </span>
           </div>
         </div>
         <h4 className="right-bar-title">My Friends</h4>
         <div className="right-bar-followings">
           <div className="right-bar-following">
-            <img src="/assets/profileImg/ahmed.jpg" alt="" className="right-bar-following-img" />
+            <img src={PF+"unknown.jpg"} alt="" className="right-bar-following-img" />
             <span className="right-bar-following-name">Ahmed Soliman</span>
           </div>
         </div>
