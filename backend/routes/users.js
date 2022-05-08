@@ -69,7 +69,6 @@ router.delete('/:id', async (req,res)=>{
         try {
             const user = await User.findOne({_id:req.body._id});
             if(user){
-                console.log(user)
                 await User.findByIdAndDelete({_id:req.body._id});
                 res.status(204).json("message:Your account has been removed successfully");
             }else{
@@ -86,11 +85,13 @@ router.delete('/:id', async (req,res)=>{
 })
 
 // get user
-router.get('/:id', async (req,res)=>{
+router.get('/', async (req,res)=>{
+    const userId = req.query.userId;
+    const username = req.query.username;
     try {
-        const user = await User.findById(req.params.id);
+        const user =userId ? await User.findById(userId) :await User.findOne({username:username});
         const {password, isAdmin, ...others} = user._doc
-        user && res.status(200).json(others);
+        res.status(200).json(others);
     } catch (err) {
         res.status(400).json(err);
     }

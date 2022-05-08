@@ -13,8 +13,12 @@ const postSchema = new Schema({
         type:Array,
         default:[]
     },
+    heart:{
+        type:Array,
+        default:[]
+    },
     image:{
-        type: String
+        type: []
     }
     
 },{timestamps: true})

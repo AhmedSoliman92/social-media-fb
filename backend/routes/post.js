@@ -2,11 +2,15 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/Post');
 const User = require('../models/Users');
+
+const mongoose = require('mongoose');
 //create post
 router.post('/create', async (req,res)=>{
+
+
+    const post = new Post(req.body);
     try {
-        console.log(req.body)
-        await Post.create(req.body);
+        await post.save(post);
         res.status(201).json("The post is created successfully.")
     } catch (err) {
         console.log(err);
@@ -18,7 +22,6 @@ router.post('/create', async (req,res)=>{
 
 router.put('/:id', async (req,res)=>{
     const  post = await Post.findById(req.params.id);
-    console.log(post)
     if(post.userId === req.body.userId){
         try {
             await Post.updateOne({_id:post._id},{
@@ -73,11 +76,24 @@ router.put('/:id/like', async(req, res) =>{
     }
 })
 
+// get a user's all posts
 
-//get timeline post
-router.get('/timeline', async (req,res)=>{
+router.get('/profile', async (req,res)=>{
     try {
-        const currentUser = await User.findById(req.body.userId);
+        const id = req.query.userId;
+        const user = await User.findById(id);
+        
+        const posts =await Post.find({userId:user._id})
+        res.status(200).json(posts);
+    } catch (err) {
+        console.error(err)
+        res.status(400).json(err)
+    }
+})
+//get timeline post
+router.get('/timeline/:userId', async (req,res)=>{
+    try {
+        const currentUser = await User.findById(req.params.userId);
         const userPosts = await Post.find({userId:currentUser._id});
         const friendPosts = await Promise.all(
             currentUser.following.map((friendId)=>{
@@ -91,14 +107,15 @@ router.get('/timeline', async (req,res)=>{
     }
 })
 // get a post
-router.get('/:id', async (req,res)=>{
-    try {
-        const post = await Post.findById(req.params.id);
-        res.json(post)
-    } catch (err) {
-        console.error(err)
-        res.status(400).json(err)
-    }
-})
+// router.get('/:id', async (req,res)=>{
+//     try {
+//         const post = await Post.findById(req.params.id);
+//         res.json(post)
+//     } catch (err) {
+//         console.error(err)
+//         res.status(400).json(err)
+//     }
+// })
+
 
 module.exports = router

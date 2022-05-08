@@ -1,0 +1,112 @@
+.right-bar{
+    flex: 3;
+    height: calc(100vh - 50px) ;
+    overflow-y: scroll;
+}
+
+.right-wrapper{
+    padding: 20px 20px 0 0;
+}
+.bday-container{
+    display: flex;
+    align-items: center;
+}
+
+.bday-text{
+    font-weight: 300;
+    font-size: 15px;
+    
+}
+.bday-img{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.righ-bar-hr{
+    margin: 20px 60px;
+    border-top: 1px #e2e2e2 solid;
+}
+
+.friend-suggest-top{
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin:20px 0 0 0;
+}
+
+.friend-suggest-title{
+    font-size: 16px;
+    font-weight: bold;
+    color: #a1a1a1;
+}
+
+.friend-suggest-btn{
+    font-size: 14px;
+    font-weight: 100;
+    border-bottom: 1px solid #4267B2;
+    color: #4267B2;
+    cursor: pointer;
+}
+.friend-suggest-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.friend-suggest-bottom-right{
+    display: grid;
+    align-items:center;
+    justify-content: center;
+    margin-right: 40px;
+    
+
+}
+.friend-suggest-img{
+    width: 90px;
+    height: 90px;
+    margin:0px 0 0 50px;
+    border-radius: 50%;
+}
+
+.acount-name{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+
+}
+
+.common-friend{
+    flex-wrap: wrap;
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.follow-btn{
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 100px;
+    color: #fff;
+    background-color: #4267B2;
+
+}
+
+.online-friends{
+    padding: 0;
+    margin: 0;
+}
+
+.online-friend-title{
+    color: #a1a1a1;
+    margin:0 0 10px 0;
+}
+
+.online-friend-list{
+    list-style: none;
+}
+
