@@ -14,7 +14,7 @@ export default function RightBar({user}) {
           </span>
         </div>
         <hr className="righ-bar-hr" />
-        <div className="friend-suggest-container">
+        {/* <div className="friend-suggest-container">
           <div className="friend-suggest-top">
             <span className="friend-suggest-title">Suggestions</span>
             <span className="friend-suggest-btn">See All</span>
@@ -30,7 +30,7 @@ export default function RightBar({user}) {
             </div>
           </div>
         
-        </div>
+        </div> */}
         <hr className="righ-bar-hr" />
 
 

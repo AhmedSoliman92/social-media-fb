@@ -15,7 +15,6 @@ const Post = ({post}) => {
     const handleLike = async()=>{
         await axios.put(`/posts/${post._id}/like`,{userId:currentUser._id,reaction:'like'});
         setIsLiked(!isLiked);
-        //setIsLoved(isLoved? !isLoved && setLove(love-1): isLoved)
         if(isLoved){
             setIsLoved(isLoved? !isLoved: isLoved);
             setLove(love-1);
@@ -29,7 +28,6 @@ const Post = ({post}) => {
             setIsLiked(isLiked? !isLiked: isLiked);
             setLike(like-1);
         }
-        //setIsLiked(isLiked? !isLiked && setLike(like-1): isLiked)
         setLove(isLoved? love - 1 : love + 1);
     }
     useEffect(()=>{

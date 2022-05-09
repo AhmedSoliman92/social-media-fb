@@ -1,5 +1,5 @@
 import './share.css'
-import {PermMedia, Tag, Room, EmojiEmotions} from '@mui/icons-material'
+import {PermMedia, Tag, Room, EmojiEmotions, CancelRounded} from '@mui/icons-material'
 import { useContext, useRef, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
@@ -9,6 +9,13 @@ export default function Share() {
     const [image,setImage]=useState([])
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const description= useRef();
+    const handleShareImages = (files) =>{
+        const imgs=[]
+        for(let i=0; i< files.length;i++){
+            imgs.push(<div key={(i+1)*100} className="img-container"><CancelRounded key={(i+1)*1000} className="cancel-img"/><img className={files.length==1?"share-img":files.length>1 && files.length<5? "share-img4":"share-img5"} key={i} src={URL.createObjectURL(files[i])} alt="" /></div>);
+        }
+        return imgs 
+    }
     const handleSubmit =async(e)=>{
         e.preventDefault()
         const forms = new FormData();
@@ -42,8 +49,10 @@ export default function Share() {
                 <input placeholder='What is in your mind?' className="share-input" ref={description}/>
             </div>
             <hr className="shared-hr" />
-            {files[0] && (<img src={URL.createObjectURL(files)} alt="" />)
-            }
+            
+            <div className="shared-img-group">
+                {files.length>0? handleShareImages(files):''}
+            </div>
             <form className="shared-bottom" onSubmit={handleSubmit}>
                     <div className="shared-options">
                         <label htmlFor='file' className="shared-option">
